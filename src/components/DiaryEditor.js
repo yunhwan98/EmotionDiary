@@ -3,6 +3,36 @@ import { useState } from "react";
 
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
+import EmotionItem from "./EmotionItem";
+
+//감정 리스트
+const emotionList = [
+  {
+    emotion_id: 1,
+    emotion_img: process.env.PUBLIC_URL + `/assets/emotion1.png`,
+    emotion_descript: "완전 좋음",
+  },
+  {
+    emotion_id: 2,
+    emotion_img: process.env.PUBLIC_URL + `/assets/emotion2.png`,
+    emotion_descript: "좋음",
+  },
+  {
+    emotion_id: 3,
+    emotion_img: process.env.PUBLIC_URL + `/assets/emotion3.png`,
+    emotion_descript: "그럭저럭",
+  },
+  {
+    emotion_id: 4,
+    emotion_img: process.env.PUBLIC_URL + `/assets/emotion4.png`,
+    emotion_descript: "나쁨",
+  },
+  {
+    emotion_id: 5,
+    emotion_img: process.env.PUBLIC_URL + `/assets/emotion5.png`,
+    emotion_descript: "끔찍함",
+  },
+];
 
 //날짜를 ISO 문자열 형식 반환
 const getStringDate = (date) => {
@@ -10,7 +40,13 @@ const getStringDate = (date) => {
 };
 
 const DiaryEditor = () => {
+  const [emotion, setEmotion] = useState(3);
   const [date, setDate] = useState(getStringDate(new Date()));
+
+  //클릭 시 emotion 변경 함수
+  const handleClickEmote = (emotion) => {
+    setEmotion(emotion);
+  };
 
   const navigate = useNavigate();
   return (
@@ -31,6 +67,19 @@ const DiaryEditor = () => {
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
+          </div>
+        </section>
+        <section>
+          <h4>오늘의 감정</h4>
+          <div className="input_box emotion_list_wrapper">
+            {emotionList.map((it) => (
+              <EmotionItem
+                key={it.emotion_id}
+                {...it}
+                onClick={handleClickEmote}
+                isSelected={it.emotion_id === emotion}
+              />
+            ))}
           </div>
         </section>
       </div>
