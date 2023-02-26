@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { DiaryDispatchContext } from "../App";
 
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
@@ -45,12 +46,24 @@ const DiaryEditor = () => {
   const [emotion, setEmotion] = useState(3);
   const [date, setDate] = useState(getStringDate(new Date()));
 
+  const { onCreate } = useContext(DiaryDispatchContext);
   //클릭 시 emotion 변경 함수
   const handleClickEmote = (emotion) => {
     setEmotion(emotion);
   };
-
   const navigate = useNavigate();
+
+  //클릭 시 일기 추가
+  const handleSubmit = () => {
+    if (content.length < 1) {
+      contentRef.current.focus();
+      return;
+    }
+    onCreate(date, content, emotion);
+    //뒤로가기를 하더라도 방금의 페이지로 돌아오지 않음
+    navigate("/", { replace: true });
+  };
+
   return (
     <div className="DiaryEditor">
       <MyHeader
@@ -96,6 +109,14 @@ const DiaryEditor = () => {
             />
           </div>
         </section>
+        <div className="control_box">
+          <MyButton text={"취소하기"} onClick={() => navigate(-1)} />
+          <MyButton
+            text={"작성완료"}
+            type={"positive"}
+            onClick={handleSubmit}
+          />
+        </div>
       </div>
     </div>
   );
