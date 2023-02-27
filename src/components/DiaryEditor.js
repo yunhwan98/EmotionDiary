@@ -6,6 +6,7 @@ import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
 import EmotionItem from "./EmotionItem";
 
+import { getStringDate } from "../util/date";
 //감정 리스트
 const emotionList = [
   {
@@ -34,11 +35,6 @@ const emotionList = [
     emotion_descript: "끔찍함",
   },
 ];
-
-//날짜를 ISO 문자열 형식 반환
-const getStringDate = (date) => {
-  return date.toISOString().slice(0, 10);
-};
 
 const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
