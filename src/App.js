@@ -41,9 +41,21 @@ export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
 function App() {
-  useEffect(() => {}, []);
-
   const [data, dispatch] = useReducer(reducer, []);
+
+  //localStorage 데이터 받아오기
+  useEffect(() => {
+    const localData = localStorage.getItem("diary");
+    if (localData) {
+      //id 기준으로 내림차순 정렬
+      const diayList = JSON.parse(localData).sort(
+        (a, b) => parseInt(b.id) - parseInt(a.id)
+      );
+      dataId.current = parseInt(diayList[0].id) + 1;
+
+      dispatch({ type: "INIT", data: diayList });
+    }
+  }, []);
 
   const dataId = useRef(6);
 
