@@ -39,7 +39,7 @@ const Home = () => {
   }, [curDate, diaryList]);
 
   useEffect(() => {
-    console.log(data);
+    //console.log(data);
   }, [data]);
 
   const increaseMonth = () => {

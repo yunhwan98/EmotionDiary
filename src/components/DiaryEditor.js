@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useRef, useContext, useEffect } from "react";
+import { useState, useRef, useContext, useEffect, useCallback } from "react";
 import { DiaryDispatchContext } from "../App";
 
 import MyHeader from "./MyHeader";
@@ -16,10 +16,12 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const [date, setDate] = useState(getStringDate(new Date()));
 
   const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
+
   //클릭 시 emotion 변경 함수
-  const handleClickEmote = (emotion) => {
+  //handleClickEmote 최적화
+  const handleClickEmote = useCallback((emotion) => {
     setEmotion(emotion);
-  };
+  }, []);
   const navigate = useNavigate();
 
   //클릭 시 일기 추가
