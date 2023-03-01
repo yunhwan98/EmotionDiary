@@ -9,6 +9,7 @@ import Diary from "./pages/Diary";
 //COMPONENTS
 import MyButton from "./components/MyButton";
 import MyHeader from "./components/MyHeader";
+import DiaryList from "./components/DiaryList";
 
 const reducer = (state, action) => {
   let newState = [];
@@ -48,12 +49,14 @@ function App() {
     const localData = localStorage.getItem("diary");
     if (localData) {
       //id 기준으로 내림차순 정렬
-      const diayList = JSON.parse(localData).sort(
+      const diaryList = JSON.parse(localData).sort(
         (a, b) => parseInt(b.id) - parseInt(a.id)
       );
-      dataId.current = parseInt(diayList[0].id) + 1;
 
-      dispatch({ type: "INIT", data: diayList });
+      if (diaryList.length >= 1) {
+        dataId.current = parseInt(diaryList[0].id) + 1;
+        dispatch({ type: "INIT", data: diaryList });
+      }
     }
   }, []);
 
