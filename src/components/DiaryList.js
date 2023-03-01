@@ -16,9 +16,6 @@ const filterOptionList = [
 //ControlMenu 컴포넌트
 //최적화 처리 (상태변화 함수는 useCallback 사용 x)
 const ControlMenu = React.memo(({ value, onChange, optionList }) => {
-  useEffect(() => {
-    console.log("Control Menu");
-  });
   return (
     <select
       className="ControlMenu"
