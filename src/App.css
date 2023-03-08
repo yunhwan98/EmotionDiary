@@ -10,7 +10,7 @@ body {
   margin: 0px;
 }
 
-@media (mid-width: 650px) {
+@media (min-width: 650px) {
   .App {
     width: 640px;
   }
