@@ -160,9 +160,10 @@ header button {
   border-radius: 5px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.DiaryItem .emotion_img_wrapper_1 {
+/* .DiaryItem .emotion_img_wrapper_1 {
   background-color: #64c964;
 }
 
@@ -180,14 +181,28 @@ header button {
 
 .DiaryItem .emotion_img_wrapper_5 {
   background-color: #fd565f;
-}
+} */
 
 .DiaryItem .emotion_img_wrapper img {
-  width: 50%;
+  width: 75%;
+  height: 75%;
+}
+
+@keyframes move {
+  0%,
+  100% {
+    transform: translateX(-5%);
+  }
+  50% {
+    transform: translateX(5%);
+  }
+}
+
+.DiaryItem .emotion_img_wrapper img:hover {
+  animation: move 1000ms infinite;
 }
 
 .DiaryItem .info_wrapper {
-  display: ;
   flex-grow: 1;
   cursor: pointer;
   margin-left: 20px;
@@ -293,29 +308,34 @@ header button {
 }
 
 .EmotionItem_off {
-  /* background-color: #ececec; */
+  background-color: #fcfaec;
 }
 
 .EmotionItem_on_1 {
-  background-color: #64c964;
+  background-color: #e5bf44;
   color: white;
+  animation: move 1000ms infinite;
 }
 
 .EmotionItem_on_2 {
-  background-color: #9dd772;
+  background-color: #eadb51;
   color: white;
+  animation: move 1000ms infinite;
 }
 .EmotionItem_on_3 {
-  background-color: #fdce17;
+  background-color: #73aa89;
   color: white;
+  animation: move 1000ms infinite;
 }
 .EmotionItem_on_4 {
-  background-color: #fd8446;
+  background-color: #42518c;
   color: white;
+  animation: move 1000ms infinite;
 }
 .EmotionItem_on_5 {
-  background-color: #fd565f;
+  background-color: #982929;
   color: white;
+  animation: move 1000ms infinite;
 }
 
 /* Diary */
@@ -339,7 +359,7 @@ header button {
 }
 
 .DiaryPage .diary_img_wrapper {
-  background-color: #ececec;
+  background-color: #fcfaec;
   width: 250px;
   height: 250px;
   border-radius: 5px;
@@ -349,25 +369,29 @@ header button {
   justify-content: space-around;
 }
 
+.DiaryPage .diary_img_wrapper img {
+  animation: move 1000ms infinite;
+}
+
 .DiaryPage .diary_img_wrapper_1 {
-  background-color: #64c964;
+  background-color: #fcfaec;
 }
 .DiaryPage .diary_img_wrapper_2 {
-  background-color: #9dd772;
+  background-color: #fcfaec;
 }
 .DiaryPage .diary_img_wrapper_3 {
-  background-color: #fdce17;
+  background-color: #fcfaec;
 }
 .DiaryPage .diary_img_wrapper_4 {
-  background-color: #fd8446;
+  background-color: #fcfaec;
 }
 .DiaryPage .diary_img_wrapper_5 {
-  background-color: #fd565f;
+  background-color: #fcfaec;
 }
 
 .DiaryPage .emotion_descript {
   font-size: 25px;
-  color: white;
+  color: #ffb896;
 }
 
 .DiaryPage .diary_content_wrapper {
