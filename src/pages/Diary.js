@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { DiaryStateContext } from "../App";
+import { useSelector } from "react-redux";
 
 import { getStringDate } from "../util/date";
 import { emotionList } from "../util/emition";
@@ -11,7 +11,8 @@ import MyHeader from "../components/MyHeader";
 const Diary = () => {
   //전달받은 diary의 id를 저장
   const { id } = useParams();
-  const diaryList = useContext(DiaryStateContext);
+
+  const diaryList = useSelector((state) => state);
   const navigate = useNavigate();
   const [data, setData] = useState();
 

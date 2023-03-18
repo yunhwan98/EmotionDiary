@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from "react";
-import { DiaryStateContext } from "../App";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import MyButton from "../components/MyButton";
 import MyHeader from "../components/MyHeader";
 import DiaryList from "../components/DiaryList";
 
 const Home = () => {
-  const diaryList = useContext(DiaryStateContext);
-
+  //const diaryList = useContext(DiaryStateContext);
+  const diaryList = useSelector((state) => state);
   const [data, setData] = useState([]);
   const [curDate, setCurDate] = useState(new Date());
   const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;

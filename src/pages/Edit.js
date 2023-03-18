@@ -1,6 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { DiaryStateContext } from "../App";
+import { useSelector } from "react-redux";
+
 import DiaryEditor from "../components/DiaryEditor";
 
 const Edit = () => {
@@ -9,7 +10,7 @@ const Edit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const diaryList = useContext(DiaryStateContext);
+  const diaryList = useSelector((state) => state);
 
   //page title 변경
   useEffect(() => {

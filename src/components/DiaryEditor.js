@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useRef, useContext, useEffect, useCallback } from "react";
-import { DiaryDispatchContext } from "../App";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
@@ -8,6 +8,7 @@ import EmotionItem from "./EmotionItem";
 
 import { getStringDate } from "../util/date";
 import { emotionList } from "../util/emition";
+import { onCreate, onRemove, onEdit } from "../actions";
 
 const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
@@ -15,7 +16,9 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const [emotion, setEmotion] = useState(3);
   const [date, setDate] = useState(getStringDate(new Date()));
 
-  const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
+  //diaryId 설정
+  const diaryId = useSelector((state) => (!state[0] ? 0 : state[0].id + 1));
+  const dispatch = useDispatch();
 
   //클릭 시 emotion 변경 함수
   //handleClickEmote 최적화
@@ -38,9 +41,9 @@ const DiaryEditor = ({ isEdit, originData }) => {
     ) {
       //Edit에 따라서 생성, 수정 결정해주기
       if (!isEdit) {
-        onCreate(date, content, emotion);
+        dispatch(onCreate(diaryId, date, content, emotion));
       } else {
-        onEdit(originData.id, date, content, emotion);
+        dispatch(onEdit(originData.id, date, content, emotion));
       }
     }
 
@@ -51,7 +54,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
   // 일기 삭제 기능 추가
   const handleRemove = () => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
-      onRemove(originData.id);
+      dispatch(onRemove(originData.id));
       navigate("/", { reaplace: true });
     }
   };
