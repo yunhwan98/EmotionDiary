@@ -2,6 +2,41 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MyButton from "./MyButton";
 import DiaryItem from "./DiaryItem";
+import styled from "styled-components";
+
+const CustomControlMenu = styled.select`
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fcfaec;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: "Nanum Pen Script";
+  font-size: 18px;
+`;
+
+const Menu_wrapper = styled.div`
+  margin-bottom: 30px;
+  padding: 10px;
+
+  background-color: #ffb896;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Right_col = styled.div`
+  flex-grow: 1;
+  button {
+    width: 100%;
+  }
+`;
+
 const sortOptionList = [
   { value: "latest", name: "최신순" },
   { value: "oldest", name: "오래된 순" },
@@ -17,17 +52,29 @@ const filterOptionList = [
 //최적화 처리 (상태변화 함수는 useCallback 사용 x)
 const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   return (
-    <select
-      className="ControlMenu"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    >
-      {optionList.map((it, idx) => (
-        <option key={idx} value={it.value}>
-          {it.name}
-        </option>
-      ))}
-    </select>
+    <>
+      {/* <select
+        className="ControlMenu"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      >
+        {optionList.map((it, idx) => (
+          <option key={idx} value={it.value}>
+            {it.name}
+          </option>
+        ))}
+      </select> */}
+      <CustomControlMenu
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      >
+        {optionList.map((it, idx) => (
+          <option key={idx} value={it.value}>
+            {it.name}
+          </option>
+        ))}
+      </CustomControlMenu>
+    </>
   );
 });
 
@@ -65,33 +112,63 @@ const DiaryList = ({ diaryList }) => {
   };
 
   return (
-    <div className="DiaryList">
-      <div className="menu_wrapper">
-        <div className="left_col">
-          <ControlMenu
-            value={sortType}
-            onChange={setSortType}
-            optionList={sortOptionList}
-          />
-          <ControlMenu
-            value={filter}
-            onChange={setFilter}
-            optionList={filterOptionList}
-          />
+    <>
+      {/* <div className="DiaryList">
+        <div className="menu_wrapper">
+          <div className="left_col">
+            <ControlMenu
+              value={sortType}
+              onChange={setSortType}
+              optionList={sortOptionList}
+            />
+            <ControlMenu
+              value={filter}
+              onChange={setFilter}
+              optionList={filterOptionList}
+            />
+          </div>
+          <div className="right_col">
+            <MyButton
+              type={"positive"}
+              text={"새 일기 쓰기"}
+              onClick={() => navigate("/new")}
+            />
+          </div>
         </div>
-        <div className="right_col">
-          <MyButton
-            type={"positive"}
-            text={"새 일기 쓰기"}
-            onClick={() => navigate("/new")}
-          />
-        </div>
-      </div>
 
-      {getProcessedDiaryList().map((it) => (
-        <DiaryItem key={it.id} {...it}></DiaryItem>
-      ))}
-    </div>
+        {getProcessedDiaryList().map((it) => (
+          <DiaryItem key={it.id} {...it}></DiaryItem>
+        ))}
+      </div> */}
+
+      <div className="DiaryList">
+        <Menu_wrapper>
+          <div className="left_col">
+            <ControlMenu
+              value={sortType}
+              onChange={setSortType}
+              optionList={sortOptionList}
+            />
+            <ControlMenu
+              value={filter}
+              onChange={setFilter}
+              optionList={filterOptionList}
+            />
+          </div>
+          <Right_col>
+            <MyButton
+              type={"positive"}
+              text={"새 일기 쓰기"}
+              onClick={() => navigate("/new")}
+            />
+          </Right_col>
+        </Menu_wrapper>
+
+        {getProcessedDiaryList().map((it) => (
+          <DiaryItem key={it.id} {...it}></DiaryItem>
+        ))}
+      </div>
+    </>
   );
 };
 
