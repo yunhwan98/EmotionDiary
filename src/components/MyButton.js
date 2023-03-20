@@ -34,21 +34,6 @@ const CustomButton = styled.button`
       return "#ffb896";
     }
   }};
-
-  /* .MyButton_default {
-  background-color: #fcfaec;
-  color: #ffb896;
-}
-
-.MyButton_positive {
-  background-color: #c4bf87;
-  color: #fcfaec;
-}
-
-.MyButton_negative {
-  background-color: #fd565f;
-  color: white;
-} */
 `;
 
 const MyButton = ({ text, type, onClick }) => {
@@ -56,17 +41,9 @@ const MyButton = ({ text, type, onClick }) => {
   const btnType = ["positive", "negative"].includes(type) ? type : "default";
 
   return (
-    <>
-      {/* <button
-        className={["MyButton", `MyButton_${btnType}`].join(" ")}
-        onClick={onClick}
-      >
-        {text}
-      </button> */}
-      <CustomButton btnType={btnType} onClick={onClick}>
-        {text}
-      </CustomButton>
-    </>
+    <CustomButton btnType={btnType} onClick={onClick}>
+      {text}
+    </CustomButton>
   );
 };
 

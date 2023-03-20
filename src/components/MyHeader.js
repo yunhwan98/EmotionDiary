@@ -57,18 +57,11 @@ const Head_text = styled.div`
 
 const MyHeader = ({ headText, leftChild, rightChild }) => {
   return (
-    <>
-      {/* <header>
-        <div className="head_btn_left">{leftChild}</div>
-        <div className="head_text">{headText}</div>
-        <div className="head_btn_right">{rightChild}</div>
-      </header> */}
-      <CustomHeader>
-        <Head_btn_left>{leftChild}</Head_btn_left>
-        <Head_text>{headText}</Head_text>
-        <Head_btn_right>{rightChild}</Head_btn_right>
-      </CustomHeader>
-    </>
+    <CustomHeader>
+      <Head_btn_left>{leftChild}</Head_btn_left>
+      <Head_text>{headText}</Head_text>
+      <Head_btn_right>{rightChild}</Head_btn_right>
+    </CustomHeader>
   );
 };
 

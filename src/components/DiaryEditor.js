@@ -123,134 +123,68 @@ const DiaryEditor = ({ isEdit, originData }) => {
   }, [isEdit, originData]);
 
   return (
-    <>
-      {/* <div className="DiaryEditor">
-        <MyHeader
-          headText={isEdit ? "일기 수정하기" : "새 일기 쓰기"}
-          leftChild={
-            <MyButton text={"< 뒤로가기"} onClick={() => navigate(-1)} />
-          }
-          rightChild={
-            isEdit && (
-              <MyButton
-                text={"삭제하기"}
-                type={"negative"}
-                onClick={handleRemove}
-              />
-            )
-          }
-        />
-        <div>
-          <section>
-            <h4>오늘은 언제인가요?</h4>
-            <div className="input_box">
-              <input
-                className="input_date"
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
-            </div>
-          </section>
-          <section>
-            <h4>오늘의 감정</h4>
-            <div className="input_box emotion_list_wrapper">
-              {emotionList.map((it) => (
-                <EmotionItem
-                  key={it.emotion_id}
-                  {...it}
-                  onClick={handleClickEmote}
-                  isSelected={it.emotion_id === emotion}
-                />
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <h4>오늘의 일기</h4>
-            <div className="input_box text_wrapper">
-              <textarea
-                placeholder="오늘은 어땠나요?"
-                ref={contentRef}
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              />
-            </div>
-          </section>
-          <div className="control_box">
-            <MyButton text={"취소하기"} onClick={() => navigate(-1)} />
+    <Diary_Editor>
+      <MyHeader
+        headText={isEdit ? "일기 수정하기" : "새 일기 쓰기"}
+        leftChild={
+          <MyButton text={"< 뒤로가기"} onClick={() => navigate(-1)} />
+        }
+        rightChild={
+          isEdit && (
             <MyButton
-              text={"작성완료"}
-              type={"positive"}
-              onClick={handleSubmit}
+              text={"삭제하기"}
+              type={"negative"}
+              onClick={handleRemove}
+            />
+          )
+        }
+      />
+      <div>
+        <section>
+          <h4>오늘은 언제인가요?</h4>
+          <div className="input_box">
+            <Input_date
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
             />
           </div>
-        </div>
-      </div> */}
+        </section>
+        <section>
+          <h4>오늘의 감정</h4>
+          <Emotion_list_wrapper>
+            {emotionList.map((it) => (
+              <EmotionItem
+                key={it.emotion_id}
+                {...it}
+                onClick={handleClickEmote}
+                isSelected={it.emotion_id === emotion}
+              />
+            ))}
+          </Emotion_list_wrapper>
+        </section>
 
-      <Diary_Editor>
-        <MyHeader
-          headText={isEdit ? "일기 수정하기" : "새 일기 쓰기"}
-          leftChild={
-            <MyButton text={"< 뒤로가기"} onClick={() => navigate(-1)} />
-          }
-          rightChild={
-            isEdit && (
-              <MyButton
-                text={"삭제하기"}
-                type={"negative"}
-                onClick={handleRemove}
-              />
-            )
-          }
-        />
-        <div>
-          <section>
-            <h4>오늘은 언제인가요?</h4>
-            <div className="input_box">
-              <Input_date
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
-            </div>
-          </section>
-          <section>
-            <h4>오늘의 감정</h4>
-            <Emotion_list_wrapper>
-              {emotionList.map((it) => (
-                <EmotionItem
-                  key={it.emotion_id}
-                  {...it}
-                  onClick={handleClickEmote}
-                  isSelected={it.emotion_id === emotion}
-                />
-              ))}
-            </Emotion_list_wrapper>
-          </section>
-
-          <section>
-            <h4>오늘의 일기</h4>
-            <div className="input_box text_wrapper">
-              <textarea
-                placeholder="오늘은 어땠나요?"
-                ref={contentRef}
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              />
-            </div>
-          </section>
-          <Control_box>
-            <MyButton text={"취소하기"} onClick={() => navigate(-1)} />
-            <MyButton
-              text={"작성완료"}
-              type={"positive"}
-              onClick={handleSubmit}
+        <section>
+          <h4>오늘의 일기</h4>
+          <div className="input_box text_wrapper">
+            <textarea
+              placeholder="오늘은 어땠나요?"
+              ref={contentRef}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
             />
-          </Control_box>
-        </div>
-      </Diary_Editor>
-    </>
+          </div>
+        </section>
+        <Control_box>
+          <MyButton text={"취소하기"} onClick={() => navigate(-1)} />
+          <MyButton
+            text={"작성완료"}
+            type={"positive"}
+            onClick={handleSubmit}
+          />
+        </Control_box>
+      </div>
+    </Diary_Editor>
   );
 };
 export default DiaryEditor;

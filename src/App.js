@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import "./App.css";
+
 import Home from "./pages/Home";
 import New from "./pages/New";
 import Edit from "./pages/Edit";

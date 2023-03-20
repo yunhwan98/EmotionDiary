@@ -75,26 +75,13 @@ const EmotionItem = ({
   isSelected,
 }) => {
   return (
-    <>
-      {/* <div
-        onClick={() => onClick(emotion_id)}
-        className={[
-          "EmotionItem",
-          isSelected ? `EmotionItem_on_${emotion_id}` : `EmotionItem_off`,
-        ].join(" ")}
-      >
-        <img src={emotion_img} />
-        <span>{emotion_descript}</span>
-      </div> */}
-
-      <Emotion_Item
-        onClick={() => onClick(emotion_id)}
-        color={isSelected ? `on_${emotion_id}` : `off`}
-      >
-        <img src={emotion_img} />
-        <span>{emotion_descript}</span>
-      </Emotion_Item>
-    </>
+    <Emotion_Item
+      onClick={() => onClick(emotion_id)}
+      color={isSelected ? `on_${emotion_id}` : `off`}
+    >
+      <img src={emotion_img} />
+      <span>{emotion_descript}</span>
+    </Emotion_Item>
   );
 };
 

@@ -79,41 +79,18 @@ const DiaryItem = ({ id, emotion, content, date }) => {
   };
 
   return (
-    <>
-      {/* <div className="DiaryItem">
-        <div
-          className={[
-            "emotion_img_wrapper",
-            `emotion_img_wrapper_${emotion}`,
-          ].join(" ")}
-          onClick={goDetail}
-        >
-          <img src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`} />
-        </div>
-        <div className="info_wrapper">
-          <div className="diary_date" onClick={goDetail}>
-            {strDate}
-          </div>
-          <div className="diary_content_preview">{content.slice(0, 25)}</div>
-        </div>
-        <div className="btn_wrapper" onClick={goEdit}>
-          <MyButton text={"수정하기"} />
-        </div>
-      </div> */}
-
-      <Diary_Item>
-        <Emotion_img_wrapper onClick={goDetail}>
-          <img src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`} />
-        </Emotion_img_wrapper>
-        <Info_wrapper>
-          <Diary_date onClick={goDetail}>{strDate}</Diary_date>
-          <Diary_content_preview>{content.slice(0, 25)}</Diary_content_preview>
-        </Info_wrapper>
-        <Btn_wrapper onClick={goEdit}>
-          <MyButton text={"수정하기"} />
-        </Btn_wrapper>
-      </Diary_Item>
-    </>
+    <Diary_Item>
+      <Emotion_img_wrapper onClick={goDetail}>
+        <img src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`} />
+      </Emotion_img_wrapper>
+      <Info_wrapper>
+        <Diary_date onClick={goDetail}>{strDate}</Diary_date>
+        <Diary_content_preview>{content.slice(0, 25)}</Diary_content_preview>
+      </Info_wrapper>
+      <Btn_wrapper onClick={goEdit}>
+        <MyButton text={"수정하기"} />
+      </Btn_wrapper>
+    </Diary_Item>
   );
 };
 

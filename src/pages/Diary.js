@@ -110,77 +110,37 @@ const Diary = () => {
     );
 
     return (
-      <>
-        {/* <div className="DiaryPage">
-          <MyHeader
-            headText={`${getStringDate(new Date(data.date))} 기록`}
-            leftChild={
-              <MyButton
-                text={"뒤로가기"}
-                onClick={() => navigate(-1)}
-              ></MyButton>
-            }
-            rightChild={
-              <MyButton
-                text={"수정하기"}
-                onClick={() => navigate(`/edit/${data.id}`)}
-              />
-            }
-          />
-          <article>
-            <section>
-              <h4>오늘의 감정</h4>
-              <div className={"diary_img_wrapper"}>
-                <img src={curEmotionData.emotion_img} />
-                <div className="emotion_descript">
-                  {curEmotionData.emotion_descript}
-                </div>
-              </div>
-            </section>
-            <section>
-              <h4>오늘의 일기</h4>
-              <div className="diary_content_wrapper">
-                <p>{data.content}</p>
-              </div>
-            </section>
-          </article>
-        </div> */}
-
-        <Diary_Page>
-          <MyHeader
-            headText={`${getStringDate(new Date(data.date))} 기록`}
-            leftChild={
-              <MyButton
-                text={"뒤로가기"}
-                onClick={() => navigate(-1)}
-              ></MyButton>
-            }
-            rightChild={
-              <MyButton
-                text={"수정하기"}
-                onClick={() => navigate(`/edit/${data.id}`)}
-              />
-            }
-          />
-          <article>
-            <section>
-              <h4>오늘의 감정</h4>
-              <Diary_img_wrapper>
-                <img src={curEmotionData.emotion_img} />
-                <Emotion_descript>
-                  {curEmotionData.emotion_descript}
-                </Emotion_descript>
-              </Diary_img_wrapper>
-            </section>
-            <section>
-              <h4>오늘의 일기</h4>
-              <Diary_content_wrapper>
-                <p>{data.content}</p>
-              </Diary_content_wrapper>
-            </section>
-          </article>
-        </Diary_Page>
-      </>
+      <Diary_Page>
+        <MyHeader
+          headText={`${getStringDate(new Date(data.date))} 기록`}
+          leftChild={
+            <MyButton text={"뒤로가기"} onClick={() => navigate(-1)}></MyButton>
+          }
+          rightChild={
+            <MyButton
+              text={"수정하기"}
+              onClick={() => navigate(`/edit/${data.id}`)}
+            />
+          }
+        />
+        <article>
+          <section>
+            <h4>오늘의 감정</h4>
+            <Diary_img_wrapper>
+              <img src={curEmotionData.emotion_img} />
+              <Emotion_descript>
+                {curEmotionData.emotion_descript}
+              </Emotion_descript>
+            </Diary_img_wrapper>
+          </section>
+          <section>
+            <h4>오늘의 일기</h4>
+            <Diary_content_wrapper>
+              <p>{data.content}</p>
+            </Diary_content_wrapper>
+          </section>
+        </article>
+      </Diary_Page>
     );
   }
 };
