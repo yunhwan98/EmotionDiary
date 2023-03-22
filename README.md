@@ -105,6 +105,8 @@ src
 ### 일기장 조회 기능
 
 - 선택한 일기장의 상세페이지를 볼 수 있는 기능입니다.
+
+
 ![감정일기장Read](https://user-images.githubusercontent.com/79241793/226954642-8ade77a8-a23c-4dc2-992d-ad460dafc495.gif)
 
 <br/>
